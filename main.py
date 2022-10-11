@@ -11,14 +11,13 @@ sys.path.append("/IternalAPI/Modules")
 os.environ['PATH'] += ':' + "/IternalAPI"
 os.environ['PATH'] += ':' + "/IternalAPI/Modules"
 
-
 if __name__=="__main__":
     AHelper = ApiHelper()
     OStreamer = OutputStreamer()
     GConnection = GameConnection(OutputStreamer=OStreamer)
     IStreamHandler = InputStreamHandler(GameConnection=GConnection, ApiHelper=AHelper)
     WS = WebSocket(OutputStreamer=OStreamer, InputStreamHandler=IStreamHandler)
-
+    
     AHelper.start()
     GConnection.start()
     OStreamer.start()

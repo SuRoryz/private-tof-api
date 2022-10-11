@@ -189,7 +189,7 @@ def update():
 @app.route("/api/get_id/<name>", methods=["GET"])
 def get_id(name):
    try:
-      ws = create_connection("ws://62.109.15.182:25565", timeout=3)
+      ws = create_connection("ws://192.168.50.157:25565", timeout=3)
       
       ws.send("unsub")
       ws.send(json.dumps({"type": "GET_ID", "query": name}))
@@ -205,7 +205,7 @@ def get_id(name):
 @app.route("/api/get_info/<pid>", methods=["GET"])
 def get_info(pid):
    try:
-      ws = create_connection("ws://62.109.15.182:25565", timeout=20)
+      ws = create_connection("ws://192.168.50.157:25565", timeout=20)
       
       ws.send("unsub")
       ws.send(json.dumps({"type": "GET_INFO", "query": pid}))

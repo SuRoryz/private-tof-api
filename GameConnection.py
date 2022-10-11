@@ -74,7 +74,7 @@ class GameConnection(Thread):
                     myack = x[TCP].seq + tcp_payload_len
                     
                     ip = Ether(dst=SERVER_MAC)/IP(src=self.SRC_HOST, dst=self.DST_HOST, flags="DF", ttl=128)
-                    ACK = TCP(sport=x[TCP].dport, dport=self.DST_PORT, flags='FA', seq=x[TCP].ack, ack=myack, window=514)
+                    ACK = TCP(sport=x[TCP].dport, dport=self.DST_PORT, flags='R', seq=x[TCP].ack, ack=myack, window=514)
                     sendp(ip/ACK, verbose=False)
 
                     return
@@ -98,7 +98,7 @@ class GameConnection(Thread):
                 return
             
             if is_fin:
-                flags = 'FA'
+                flags = 'RA'
                 self.stop = True
             else:
                 flags = 'A'

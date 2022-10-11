@@ -90,8 +90,10 @@ class OutputStreamer(Thread):
 
                     except Exception as e:
                         print('IN API', e)
-                        del self.API_QUEUE[0]
-
+                        try:
+                            del self.API_QUEUE[0]
+                        except:
+                            pass
                         try:
                             del self.QUERIES[f'{anws["type"]}/{anws["query"]}']
                         except:

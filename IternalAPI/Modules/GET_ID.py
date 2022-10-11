@@ -41,7 +41,7 @@ class GET_ID(ApiModule):
 
         PA.show2()
         sendp(PA)
-
+        
         res = []
 
         def sn(x):
@@ -55,4 +55,3 @@ class GET_ID(ApiModule):
         t.join()
 
         GameConnection.OutputStreamer.API_QUEUE.append(['GET_ID', [bytes(res[0])]])
-        GameConnection.myseq += len(PA[TCP].payload.load)

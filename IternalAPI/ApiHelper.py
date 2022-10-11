@@ -13,6 +13,7 @@ class ApiHelper(Thread):
                 if self.QUEUE:
                     func = self.QUEUE[0]
                     del self.QUEUE[0]
+                    print("FUNC START")
 
                     func[0].run(func[1], **func[2])
             except Exception as e:
